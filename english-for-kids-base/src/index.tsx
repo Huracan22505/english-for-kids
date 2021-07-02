@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.scss';
 
+import App from './App';
+
 ReactDOM.render(
   <React.StrictMode>
-    <h1>Hello</h1>
-    <img src="./angry.jpg" alt="" width="200px" />
+    <App />
   </React.StrictMode>,
   document.getElementById('root'),
 );
