@@ -32,7 +32,13 @@
     "typescript": "^4.2.4",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "homepage": "https://rolling-scopes-school.github.io/huracan22505-JSFE2021Q1"
 }

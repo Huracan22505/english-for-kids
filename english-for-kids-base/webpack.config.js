@@ -24,7 +24,7 @@ module.exports = ({ development }) => ({
   mode: development ? 'development' : 'production',
   devtool: development ? 'inline-source-map' : false,
   entry: {
-    main: './src/index.ts',
+    main: './src/index.tsx',
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -34,7 +34,7 @@ module.exports = ({ development }) => ({
   module: {
     rules: [
       {
-        test: /\.[tj]s$/,
+        test: /\.[tj]sx$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
@@ -70,7 +70,7 @@ module.exports = ({ development }) => ({
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
   ],
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   ...devServer(development),
 });
