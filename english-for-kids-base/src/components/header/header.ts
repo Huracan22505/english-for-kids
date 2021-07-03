@@ -12,6 +12,7 @@ const headerMarkupTemplate = `
             width="59px"
             height="59px"
           />
+          <h1>English For Kids</h1>
           <div class="mode-switch__control">
             <input
               class="mode-switch__toggle"
@@ -31,6 +32,7 @@ const headerMarkupTemplate = `
         </div>
       </div>
     </header>
+    <main id="main"></main>
 `;
 
 const headerRender = (): void => {
