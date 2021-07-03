@@ -1,0 +1,80 @@
+.header {
+  padding-top: 36px;
+  padding-bottom: 36px;
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+// MODE SWITCHER
+
+.mode-switch {
+  display: flex;
+  align-items: center;
+}
+
+.mode-switch__control {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  width: 64px;
+  height: 32px;
+  border-radius: 50em;
+  padding: 3px 0;
+}
+
+.mode-switch__toggle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+
+.mode-switch__track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  user-select: none;
+  background-color: #333;
+  border-radius: inherit;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.mode-switch__marker {
+  position: relative;
+  background-color: #fff;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  transform: translateX(3px);
+  transition: transform 250ms var(--timing-function);
+}
+
+.mode-switch__toggle:checked + .mode-switch__track {
+  background-color: #d3d3d4;
+}
+
+.mode-switch__toggle:checked ~ .mode-switch__marker {
+  transform: translateX(35px);
+}
+
+.mode-switch__toggle:focus + .mode-switch__track,
+.mode-switch__toggle:active + .mode-switch__track {
+  box-shadow: 0 0 0 3px #2196f3;
+}
