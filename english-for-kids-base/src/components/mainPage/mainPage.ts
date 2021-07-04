@@ -7,7 +7,7 @@ const mainPageMarkupTemplate = (
     image: string;
   }>,
 ) => `
-    <section class="main-section">
+    <section class="category-section">
       <div class="container">
         <ul class="category-list">
         ${data.map(
