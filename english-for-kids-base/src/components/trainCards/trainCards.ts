@@ -1,3 +1,5 @@
+import { playAudio } from '../../shared/utils/audio';
+
 const trainCardsMarkupTemplate = (
   data: Array<{
     id: number;
@@ -7,10 +9,10 @@ const trainCardsMarkupTemplate = (
     image: string;
   }>,
 ) => `<div class="cards-field">
-      ${data.map(
-        el => `
+      ${data
+        .map(
+          el => `
       <div class="card-container flipped">
-        <audio src="${el.audio}"></audio>
         <div class="card">
           <div
             class="card__front"
@@ -19,6 +21,7 @@ const trainCardsMarkupTemplate = (
             <p class="text">${el.translate}</p>
           </div>
           <div
+            data-audio="${el.audio}"
             class="card__back"
             style="background-image: url(${el.image})"
           >
@@ -29,7 +32,8 @@ const trainCardsMarkupTemplate = (
           </div>
         </div>
       </div>`,
-      )}
+        )
+        .join(' ')}
     </div>
 `;
 
@@ -51,6 +55,7 @@ const trainCardsRender = (
   cardField.addEventListener('click', e => {
     const target = <HTMLButtonElement>e.target;
     const targetId = target.dataset.id;
+    const targetAudio = target.dataset.audio;
 
     if (targetId) {
       cardContainers[Number(targetId) - 1].classList.remove('flipped');
@@ -62,6 +67,10 @@ const trainCardsRender = (
           cardContainers[Number(targetId) - 1].classList.add('flipped');
         }
       });
+    }
+
+    if (targetAudio) {
+      playAudio(targetAudio);
     }
   });
 };

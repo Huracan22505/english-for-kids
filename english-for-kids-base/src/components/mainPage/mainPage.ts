@@ -3,6 +3,7 @@ import './mainPage.scss';
 
 const mainPageMarkupTemplate = (
   data: Array<{
+    route: string;
     category: string;
     image: string;
   }>,
@@ -10,12 +11,14 @@ const mainPageMarkupTemplate = (
     <section class="category-section">
       <div class="container">
         <ul class="category-list">
-        ${data.map(
-          el =>
-            `<a href=""><li style="background-image: url(${el.image})" class="item">
+        ${data
+          .map(
+            el =>
+              `<a href="#${el.route}"><li style="background-image: url(${el.image})" class="item">
             <p class="text" >${el.category}</p>
           </li></a>`,
-        )}
+          )
+          .join(' ')}
         </ul>
       </div>
     </section>

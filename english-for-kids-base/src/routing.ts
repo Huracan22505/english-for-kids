@@ -24,6 +24,13 @@ const routing = (): void => {
       case 'action-set-a':
         trainCardsRender(sets.actionSetA);
         break;
+      case 'action-set-b':
+        trainCardsRender(sets.actionSetB);
+        break;
+      case 'action-set-c':
+        trainCardsRender(sets.actionSetC);
+        break;
+
       default:
         mainPageRender();
         break;
