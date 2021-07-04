@@ -6,6 +6,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .img {
+      cursor: pointer;
+      z-index: 11;
+    }
   }
 }
 

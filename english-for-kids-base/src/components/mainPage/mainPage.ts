@@ -1,5 +1,5 @@
-import './mainPage.scss';
 import { categories } from '../../data/categories';
+import './mainPage.scss';
 
 const mainPageMarkupTemplate = (
   data: Array<{
@@ -12,9 +12,9 @@ const mainPageMarkupTemplate = (
         <ul class="category-list">
         ${data.map(
           el =>
-            `<li style="background-image: url(${el.image})" class="item">
+            `<a href=""><li style="background-image: url(${el.image})" class="item">
             <p class="text" >${el.category}</p>
-          </li>`,
+          </li></a>`,
         )}
         </ul>
       </div>

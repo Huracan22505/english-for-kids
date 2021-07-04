@@ -20,6 +20,8 @@
 
     margin: 20px;
 
+    border-radius: 4px;
+
     background-position: center;
     background-size: cover;
 
@@ -28,13 +30,17 @@
     .text {
       width: 100%;
 
-      position: absolute;
-      top: 92%;
+      padding: 4px;
 
-      color: black;
+      position: absolute;
+      top: 83%;
+
+      color: #000000;
+      font-size: 22px;
+      line-height: 26px;
       text-align: center;
 
-      background-color: rgb(143, 137, 137);
+      background-color: rgba(81, 197, 35, 0.7);
     }
   }
 }
