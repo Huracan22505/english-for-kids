@@ -30,6 +30,9 @@ const routing = (): void => {
       case 'action-set-c':
         trainCardsRender(sets.actionSetC);
         break;
+      case 'adjective':
+        trainCardsRender(sets.adjective);
+        break;
 
       default:
         mainPageRender();
