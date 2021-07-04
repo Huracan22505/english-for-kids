@@ -1,48 +1,31 @@
 import refs from './shared/refs';
 import { App } from './app';
+import { mainPageRender } from './components/mainPage/mainPage';
+import { trainCardsRender } from './components/trainCards/trainCards';
+import { sets } from './data/sets';
 
 const routing = (): void => {
-  const scoreBtn = document.getElementById('score') as HTMLElement;
-  const aboutBtn = document.getElementById('about') as HTMLElement;
-  const settingsBtn = document.getElementById('settings') as HTMLElement;
-  const startBtn = document.querySelector('.start-btn') as HTMLElement;
+  const mainPage = document.getElementById('main') as HTMLElement;
 
   function startGame() {
-    if (startBtn.innerHTML === 'RESTART GAME') {
-      const cardsField = document.querySelector('.cards-field') as HTMLElement;
-      cardsField.remove();
-    }
-
     new App(refs.appElement).start();
-
-    startBtn.innerHTML = 'RESTART GAME';
   }
 
   const gameRender = () => {
-    window.location.hash = 'game';
+    mainPage.innerHTML = '';
     startGame();
-
-    const cardsField = document.querySelector('.cards-field') as HTMLElement;
-
-    const difficulty = localStorage.getItem('gameDifficulty');
-    if (difficulty === '6x6') {
-      cardsField.setAttribute('style', 'width:1440px;');
-    } else {
-      cardsField.setAttribute('style', 'width:640px;');
-    }
   };
 
   const controller = (hash: string) => {
     switch (hash) {
-      case 'score':
+      case 'home':
+        mainPageRender();
         break;
-      case 'settings':
+      case 'action-set-a':
+        trainCardsRender(sets.actionSetA);
         break;
-      case 'game':
-        gameRender();
-        break;
-
       default:
+        mainPageRender();
         break;
     }
   };
@@ -54,7 +37,6 @@ const routing = (): void => {
   };
 
   window.addEventListener('hashchange', handleHash);
-  // startBtn.addEventListener('click', gameRender);
 
   handleHash();
 };
