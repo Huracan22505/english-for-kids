@@ -36,6 +36,9 @@ const routing = (): void => {
       case 'animal-set-a':
         trainCardsRender(sets.animalSetA);
         break;
+      case 'animal-set-b':
+        trainCardsRender(sets.animalSetB);
+        break;
 
       default:
         mainPageRender();
