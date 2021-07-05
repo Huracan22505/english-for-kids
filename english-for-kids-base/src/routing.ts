@@ -42,7 +42,9 @@ const routing = (): void => {
       case 'clothes':
         trainCardsRender(sets.clothes);
         break;
-
+      case 'emotions':
+        trainCardsRender(sets.emotions);
+        break;
       default:
         mainPageRender();
         break;
