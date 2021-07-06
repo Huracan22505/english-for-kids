@@ -1,5 +1,6 @@
 import { playAudio } from '../../shared/utils/audio';
 import { shuffle } from '../../shared/utils/shuffleArr';
+import { mainPageRender } from '../mainPage/mainPage';
 
 const gameCardsMarkupTemplate = (
   data: Array<{
@@ -12,8 +13,8 @@ const gameCardsMarkupTemplate = (
 ) => `
     <div class="cards-field">
       ${data
-        .map(
-          el => `
+    .map(
+      el => `
       <div class="card-container">
         <div class="card">
           <div class="card-cover hidden"></div>
@@ -26,8 +27,8 @@ const gameCardsMarkupTemplate = (
         </div>
       </div>
       `,
-        )
-        .join(' ')}
+    )
+    .join(' ')}
     </div>
     <div class="score-container">
     <div class="score"></div>
@@ -86,6 +87,27 @@ const gameCardsRender = (
 
           if (targetAudio === shuffledArr[0]) {
             score += 1;
+
+            if (score === 8 && mistakes !== 0) {
+              playAudio('./audio/failure.mp3');
+              mainPage.innerHTML = `<img class="win-img" src="./images/failure.gif" alt="you win" />
+              <p class="failure-msg" >You made ${mistakes} ${
+  mistakes > 1 ? 'mistakes' : 'mistake'
+}!</p>`;
+
+              setTimeout(() => {
+                mainPageRender();
+              }, 2500);
+            }
+
+            if (score === 8 && mistakes === 0) {
+              playAudio('./audio/success.mp3');
+              mainPage.innerHTML = `<img class="win-img" src="./images/win.gif" alt="you win" />`;
+
+              setTimeout(() => {
+                mainPageRender();
+              }, 3000);
+            }
 
             if (starsCount.length > 7) scoreContainer?.lastChild?.remove();
             scoreContainer?.insertAdjacentHTML(

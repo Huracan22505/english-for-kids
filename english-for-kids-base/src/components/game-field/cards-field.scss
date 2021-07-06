@@ -55,3 +55,22 @@
   //   cursor: auto;
   // }
 }
+
+.win-img {
+  width: 800px;
+  height: 450px;
+
+  border-radius: 8px;
+
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.failure-msg {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  color: #000000;
+
+  text-align: center;
+}
