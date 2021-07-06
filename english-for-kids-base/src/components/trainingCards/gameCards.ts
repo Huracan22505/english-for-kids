@@ -1,4 +1,5 @@
 import { playAudio } from '../../shared/utils/audio';
+import { shuffle } from '../../shared/utils/shuffleArr';
 
 const gameCardsMarkupTemplate = (
   data: Array<{
@@ -8,23 +9,30 @@ const gameCardsMarkupTemplate = (
     audio: string;
     image: string;
   }>,
-) => `<div class="cards-field">
+) => `
+    <div class="cards-field">
       ${data
         .map(
           el => `
       <div class="card-container">
         <div class="card">
+          <div class="card-cover hidden"></div>
           <div
             class="card__front"
             style="background-image: url(${el.image})"
-          >
-          </div>
+            data-audio="${el.audio}"
+            data-id="${el.id}"
+          ></div>
         </div>
-      </div>`,
+      </div>
+      `,
         )
         .join(' ')}
     </div>
-`;
+    <button class="start-btn" type="button">
+      <span class="start-btn-text">Start</span>
+      <img class="start-btn-img hidden" src="./images/repeat.png" alt="" />
+    </button>`;
 
 const gameCardsRender = (
   data: Array<{
@@ -36,32 +44,62 @@ const gameCardsRender = (
   }>,
 ): void => {
   const mainPage = document.getElementById('main') as HTMLElement;
+
   mainPage.innerHTML = gameCardsMarkupTemplate(data);
 
+  const startBtn = document.querySelector('.start-btn') as HTMLButtonElement;
   const cardField = document.querySelector('.cards-field') as HTMLDivElement;
   const [...cardContainers] = document.querySelectorAll('.card-container');
+  const [...cardCovers] = document.querySelectorAll('.card-cover');
 
-  cardField.addEventListener('click', e => {
-    const target = <HTMLButtonElement>e.target;
-    const targetId = target.dataset.id;
-    const targetAudio = target.dataset.audio;
+  const audioArr = data.map(el => el.audio);
+  const shuffledArr = shuffle(audioArr);
 
-    if (targetId) {
-      cardContainers[Number(targetId) - 1].classList.remove('flipped');
+  startBtn.addEventListener(
+    'click',
+    () => {
+      const startBtnText = document.querySelector('.start-btn-text');
+      const startBtnImg = document.querySelector('.start-btn-img');
 
-      cardField.addEventListener('mouseover', ev => {
-        const mouseTarget = <HTMLDivElement>ev.target;
+      let score = 0;
+      let mistakes = 0;
 
-        if (mouseTarget.classList.contains('cards-field')) {
-          cardContainers[Number(targetId) - 1].classList.add('flipped');
+      startBtnText?.classList.add('hidden');
+      startBtnImg?.classList.remove('hidden');
+
+      playAudio(shuffledArr[0]);
+
+      startBtn.addEventListener('click', () => playAudio(shuffledArr[0]));
+
+      cardField.addEventListener('click', e => {
+        const target = <HTMLElement>e.target;
+
+        if (target.classList.contains('card__front')) {
+          const targetId = target.dataset.id;
+          const targetAudio = target.dataset.audio;
+
+          if (targetAudio === shuffledArr[0]) {
+            score += 1;
+
+            cardContainers[Number(targetId) - 1].classList.add(
+              'noPointerEvents',
+            );
+            cardCovers[Number(targetId) - 1].classList.remove('hidden');
+
+            playAudio('./audio/correct.mp3');
+            setTimeout(() => {
+              shuffledArr.shift();
+              playAudio(shuffledArr[0]);
+            }, 700);
+          } else {
+            mistakes += 1;
+            playAudio('./audio/error.mp3');
+          }
         }
       });
-    }
-
-    if (targetAudio) {
-      playAudio(targetAudio);
-    }
-  });
+    },
+    { once: true },
+  );
 };
 
 export { gameCardsRender };
