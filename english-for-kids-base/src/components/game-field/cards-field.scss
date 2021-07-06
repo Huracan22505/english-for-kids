@@ -1,12 +1,47 @@
 .cards-field {
   margin-top: 30px;
-  margin-bottom: 30px;
 
   width: 1008px;
 
   display: flex;
   flex-wrap: wrap;
 
-  background: rgba(0, 0, 0, 0.05);
+  // background: rgba(0, 0, 0, 0.05);
   border-radius: 5px;
+}
+
+.start-btn {
+  width: 92px;
+  height: 92px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  text-transform: uppercase;
+
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+
+  background: #00bf9a;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  cursor: pointer;
+
+  // &:hover {
+  //   background: #2ee59d;
+  //   box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+  //   color: white;
+  //   transform: translateY(-7px);
+  // }
+
+  // &:disabled {
+  //   background-color: gray;
+  //   cursor: auto;
+  // }
 }

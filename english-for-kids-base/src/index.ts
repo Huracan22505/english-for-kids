@@ -17,6 +17,7 @@ if (localStorage.getItem('mode') === 'game') {
 
 modeSwitcher.addEventListener('change', () => {
   mode = localStorage.getItem('mode');
+
   switch (mode) {
     case 'game':
       localStorage.setItem('mode', 'training');
@@ -27,4 +28,6 @@ modeSwitcher.addEventListener('change', () => {
     default:
       break;
   }
+
+  routing();
 });

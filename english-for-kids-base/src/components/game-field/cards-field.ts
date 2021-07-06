@@ -3,7 +3,7 @@ import { Card } from '../card/card';
 import './cards-field.scss';
 
 // SECONDS
-const SHOW_TIME = 10;
+const SHOW_TIME = 2;
 
 export class CardsField extends BaseComponent {
   cards: Card[] = [];

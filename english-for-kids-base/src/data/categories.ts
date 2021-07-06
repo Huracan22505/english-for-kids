@@ -17,7 +17,7 @@ export const categories = [
   {
     route: 'adjective',
     category: 'Adjective',
-    image: './images/homeless.jpg',
+    image: './images/fat.jpg',
   },
   {
     route: 'animal-set-a',

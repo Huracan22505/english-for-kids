@@ -6,18 +6,6 @@ import { CardsField } from '../game-field/cards-field';
 // milliseconds
 const FLIP_DELAY = 700;
 
-let mistakes = 0;
-let timerValue: number;
-let score: number;
-
-let matches: number;
-
-if (localStorage.getItem('gameDifficulty') === '6x6') {
-  matches = 16;
-} else {
-  matches = 8;
-}
-
 export class Game extends BaseComponent {
   private readonly cardsField: CardsField;
 
@@ -67,8 +55,6 @@ export class Game extends BaseComponent {
       card.element.classList.remove('mistake-true');
 
       await Promise.all([this.activeCard.flipToBack(), card.flipToBack()]);
-
-      mistakes += 1;
     } else {
       this.activeCard.element.classList.add('mistake-false');
       card.element.classList.add('mistake-false');
@@ -79,20 +65,5 @@ export class Game extends BaseComponent {
     const isCardsOpen: boolean = this.cardsField.cards.every(
       el => el.isFlipped === false,
     );
-
-    if (isCardsOpen) {
-      const timer = document.querySelector('.timer');
-      if (!timer?.textContent) throw Error('Timer element not found');
-      timerValue = Number(timer.textContent.replace('secs', ''));
-      score = (matches - mistakes) * 100 - timerValue * 10;
-
-      mistakes = 0;
-
-      if (score < 0) {
-        localStorage.setItem('score', '0');
-      } else {
-        localStorage.setItem('score', score.toString());
-      }
-    }
   }
 }

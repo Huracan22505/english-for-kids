@@ -42,7 +42,7 @@ const headerMarkupTemplate = `
       </div>
     </header>
     ${backdropMarkup}
-    <main id="main"></main>
+    <main id="main" class="main"></main>
     ${sidebarMarkupTemplate(categories)}
 `;
 

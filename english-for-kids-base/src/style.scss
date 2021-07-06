@@ -18,6 +18,11 @@ body {
   overflow: hidden;
 }
 
+.noPointerEvents {
+  pointer-events: none;
+  cursor: none;
+}
+
 .hidden {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
