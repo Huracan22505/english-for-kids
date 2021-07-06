@@ -1,7 +1,9 @@
 import refs from './shared/refs';
 import { App } from './app';
 import { mainPageRender } from './components/mainPage/mainPage';
-import { trainCardsRender } from './components/trainCards/trainCards';
+import { trainingCardsRender } from './components/trainingCards/trainingCards';
+import { gameCardsRender } from './components/trainingCards/gameCards';
+
 import { sets } from './data/sets';
 
 const routing = (): void => {
@@ -17,37 +19,72 @@ const routing = (): void => {
   };
 
   const controller = (hash: string) => {
-    switch (hash) {
-      case 'home':
-        mainPageRender();
-        break;
-      case 'action-set-a':
-        trainCardsRender(sets.actionSetA);
-        break;
-      case 'action-set-b':
-        trainCardsRender(sets.actionSetB);
-        break;
-      case 'action-set-c':
-        trainCardsRender(sets.actionSetC);
-        break;
-      case 'adjective':
-        trainCardsRender(sets.adjective);
-        break;
-      case 'animal-set-a':
-        trainCardsRender(sets.animalSetA);
-        break;
-      case 'animal-set-b':
-        trainCardsRender(sets.animalSetB);
-        break;
-      case 'clothes':
-        trainCardsRender(sets.clothes);
-        break;
-      case 'emotions':
-        trainCardsRender(sets.emotions);
-        break;
-      default:
-        mainPageRender();
-        break;
+    if (localStorage.getItem('mode') === 'training') {
+      switch (hash) {
+        case 'home':
+          mainPageRender();
+          break;
+        case 'action-set-a':
+          trainingCardsRender(sets.actionSetA);
+          break;
+        case 'action-set-b':
+          trainingCardsRender(sets.actionSetB);
+          break;
+        case 'action-set-c':
+          trainingCardsRender(sets.actionSetC);
+          break;
+        case 'adjective':
+          trainingCardsRender(sets.adjective);
+          break;
+        case 'animal-set-a':
+          trainingCardsRender(sets.animalSetA);
+          break;
+        case 'animal-set-b':
+          trainingCardsRender(sets.animalSetB);
+          break;
+        case 'clothes':
+          trainingCardsRender(sets.clothes);
+          break;
+        case 'emotions':
+          trainingCardsRender(sets.emotions);
+          break;
+        default:
+          mainPageRender();
+          break;
+      }
+    } else {
+      switch (hash) {
+        case 'home':
+          mainPageRender();
+          break;
+        case 'action-set-a':
+          gameCardsRender(sets.actionSetA);
+          break;
+        case 'action-set-b':
+          gameCardsRender(sets.actionSetB);
+          break;
+        case 'action-set-c':
+          gameCardsRender(sets.actionSetC);
+          break;
+        case 'adjective':
+          gameCardsRender(sets.adjective);
+          break;
+        case 'animal-set-a':
+          gameCardsRender(sets.animalSetA);
+          break;
+        case 'animal-set-b':
+          gameCardsRender(sets.animalSetB);
+          break;
+        case 'clothes':
+          gameCardsRender(sets.clothes);
+          break;
+        case 'emotions':
+          gameCardsRender(sets.emotions);
+          break;
+        default:
+          mainPageRender();
+          break;
+      }
     }
   };
 
