@@ -10,6 +10,16 @@
   border-radius: 5px;
 }
 
+.score-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .star + .star {
+    margin-left: 8px;
+  }
+}
+
 .start-btn {
   width: 92px;
   height: 92px;

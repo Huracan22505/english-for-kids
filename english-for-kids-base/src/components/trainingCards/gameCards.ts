@@ -29,10 +29,14 @@ const gameCardsMarkupTemplate = (
         )
         .join(' ')}
     </div>
+    <div class="score-container">
+    <div class="score"></div>
     <button class="start-btn" type="button">
-      <span class="start-btn-text">Start</span>
-      <img class="start-btn-img hidden" src="./images/repeat.png" alt="" />
-    </button>`;
+    <span class="start-btn-text">Start</span>
+    <img class="start-btn-img hidden" src="./images/repeat.png" alt="" />
+    </button>
+    </div>
+`;
 
 const gameCardsRender = (
   data: Array<{
@@ -60,6 +64,7 @@ const gameCardsRender = (
     () => {
       const startBtnText = document.querySelector('.start-btn-text');
       const startBtnImg = document.querySelector('.start-btn-img');
+      const scoreContainer = document.querySelector('.score');
 
       let score = 0;
       let mistakes = 0;
@@ -77,9 +82,16 @@ const gameCardsRender = (
         if (target.classList.contains('card__front')) {
           const targetId = target.dataset.id;
           const targetAudio = target.dataset.audio;
+          const [...starsCount] = document.querySelectorAll('.star');
 
           if (targetAudio === shuffledArr[0]) {
             score += 1;
+
+            if (starsCount.length > 7) scoreContainer?.lastChild?.remove();
+            scoreContainer?.insertAdjacentHTML(
+              'afterbegin',
+              `<img class="star" src="./images/star-win.png" alt="success">`,
+            );
 
             cardContainers[Number(targetId) - 1].classList.add(
               'noPointerEvents',
@@ -93,6 +105,13 @@ const gameCardsRender = (
             }, 700);
           } else {
             mistakes += 1;
+
+            if (starsCount.length > 7) scoreContainer?.lastChild?.remove();
+            scoreContainer?.insertAdjacentHTML(
+              'afterbegin',
+              '<img class="star" src="./images/star.png" alt="success">',
+            );
+
             playAudio('./audio/error.mp3');
           }
         }
