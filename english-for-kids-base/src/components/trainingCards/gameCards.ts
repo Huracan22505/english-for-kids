@@ -1,6 +1,5 @@
 import { playAudio } from '../../shared/utils/audio';
 import { shuffle } from '../../shared/utils/shuffleArr';
-import { mainPageRender } from '../mainPage/mainPage';
 
 const gameCardsMarkupTemplate = (
   data: Array<{
@@ -96,7 +95,7 @@ const gameCardsRender = (
 }!</p>`;
 
               setTimeout(() => {
-                mainPageRender();
+                window.location.hash = '#home';
               }, 2500);
             }
 
@@ -105,7 +104,7 @@ const gameCardsRender = (
               mainPage.innerHTML = `<img class="win-img" src="./images/win.gif" alt="you win" />`;
 
               setTimeout(() => {
-                mainPageRender();
+                window.location.hash = '#home';
               }, 3000);
             }
 
