@@ -17,7 +17,9 @@ const headerMarkupTemplate = `
             height="50px"
           />
           <h1>English For Kids</h1>
-          <div class="mode-switch__control">
+          <div class="mode-switcher">
+           <p class="text">Train</p>
+           <div id="mode-switcher" class="mode-switch__control">
             <input
               class="mode-switch__toggle"
               type="checkbox"
@@ -25,13 +27,16 @@ const headerMarkupTemplate = `
               id="mode-switch-toggle"
               aria-label="Change mode"
             />
-            <label
+             <label
               aria-hidden="true"
               class="mode-switch__track"
               for="mode-switch-toggle"
             >
-            </label>
-            <div aria-hidden="true" class="mode-switch__marker"></div>
+             </label>
+             <div aria-hidden="true" class="mode-switch__marker">
+             </div>
+           </div>
+           <p class="text">Game</p>
           </div>
         </div>
       </div>
