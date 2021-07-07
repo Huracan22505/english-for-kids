@@ -1,0 +1,49 @@
+.statistic-section {
+  .category {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      margin-bottom: 4px;
+    }
+
+    img {
+      width: 150px;
+      height: 130px;
+
+      border-radius: 8px;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+    }
+
+    .item + .item {
+      margin-top: 10px;
+    }
+  }
+}
+
+.words-list {
+  display: flex;
+  align-items: center;
+
+  .word-list-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 150px;
+    height: 100px;
+
+    border-radius: 8px;
+
+    background-color: rgb(177, 174, 211);
+  }
+
+  .word-list-item {
+    margin-left: 10px;
+  }
+}

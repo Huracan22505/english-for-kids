@@ -18,6 +18,9 @@ const sidebarMarkupTemplate = (
         </li>`,
     )
     .join('')}
+          <li class="item">
+            <a href="#statistic">Statistic</a>
+          </li>
       </ul>
     </aside>
 `;

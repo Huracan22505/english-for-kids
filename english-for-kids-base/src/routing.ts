@@ -1,13 +1,11 @@
-import refs from './shared/refs';
 import { mainPageRender } from './components/mainPage/mainPage';
 import { trainingCardsRender } from './components/trainingCards/trainingCards';
 import { gameCardsRender } from './components/trainingCards/gameCards';
+import { statisticRender } from './components/statistic/statistic';
 
 import { sets } from './data/sets';
 
 const routing = (): void => {
-  const mainPage = document.getElementById('main') as HTMLElement;
-
   const controller = (hash: string) => {
     if (localStorage.getItem('mode') === 'training') {
       switch (hash) {
@@ -37,6 +35,9 @@ const routing = (): void => {
           break;
         case 'emotions':
           trainingCardsRender(sets.emotions);
+          break;
+        case 'statistic':
+          statisticRender(sets);
           break;
         default:
           mainPageRender();
@@ -70,6 +71,9 @@ const routing = (): void => {
           break;
         case 'emotions':
           gameCardsRender(sets.emotions);
+          break;
+        case 'statistic':
+          statisticRender(sets);
           break;
         default:
           mainPageRender();
