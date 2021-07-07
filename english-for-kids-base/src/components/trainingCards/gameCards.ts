@@ -1,5 +1,6 @@
 import { playAudio } from '../../shared/utils/audio';
 import { shuffle } from '../../shared/utils/shuffleArr';
+import './cards.scss';
 
 const gameCardsMarkupTemplate = (
   data: Array<{

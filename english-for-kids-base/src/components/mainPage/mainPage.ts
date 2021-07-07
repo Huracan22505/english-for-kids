@@ -12,13 +12,13 @@ const mainPageMarkupTemplate = (
       <div class="container">
         <ul class="category-list">
         ${data
-          .map(
-            el =>
-              `<a href="#${el.route}"><li style="background-image: url(${el.image})" class="item">
+    .map(
+      el =>
+        `<a href="#${el.route}"><li style="background-image: url(${el.image})" class="item">
             <p class="text" >${el.category}</p>
           </li></a>`,
-          )
-          .join(' ')}
+    )
+    .join(' ')}
         </ul>
       </div>
     </section>

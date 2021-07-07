@@ -10,8 +10,8 @@ const trainingCardsMarkupTemplate = (
   }>,
 ) => `<div class="cards-field">
       ${data
-        .map(
-          el => `
+    .map(
+      el => `
       <div class="card-container flipped">
         <div class="card">
           <div
@@ -32,8 +32,8 @@ const trainingCardsMarkupTemplate = (
           </div>
         </div>
       </div>`,
-        )
-        .join(' ')}
+    )
+    .join(' ')}
     </div>
 `;
 

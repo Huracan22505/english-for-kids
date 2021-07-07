@@ -1,5 +1,4 @@
 import refs from './shared/refs';
-import { App } from './app';
 import { mainPageRender } from './components/mainPage/mainPage';
 import { trainingCardsRender } from './components/trainingCards/trainingCards';
 import { gameCardsRender } from './components/trainingCards/gameCards';
@@ -8,15 +7,6 @@ import { sets } from './data/sets';
 
 const routing = (): void => {
   const mainPage = document.getElementById('main') as HTMLElement;
-
-  function startGame() {
-    new App(refs.appElement).start();
-  }
-
-  const gameRender = () => {
-    mainPage.innerHTML = '';
-    startGame();
-  };
 
   const controller = (hash: string) => {
     if (localStorage.getItem('mode') === 'training') {
