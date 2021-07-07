@@ -1,16 +1,16 @@
 export const categories = [
   {
-    route: 'action-set-a',
+    route: 'actionSetA',
     category: 'Action (set A)',
     image: './images/swim.jpg',
   },
   {
-    route: 'action-set-b',
+    route: 'actionSetB',
     category: 'Action (set B)',
     image: './images/dive.jpg',
   },
   {
-    route: 'action-set-c',
+    route: 'actionSetC',
     category: 'Action (set C)',
     image: './images/dance.jpg',
   },
@@ -20,12 +20,12 @@ export const categories = [
     image: './images/fat.jpg',
   },
   {
-    route: 'animal-set-a',
+    route: 'animalSetA',
     category: 'Animal (set A)',
     image: './images/chicken.jpg',
   },
   {
-    route: 'animal-set-b',
+    route: 'animalSetB',
     category: 'Animal (set B)',
     image: './images/dog.jpg',
   },

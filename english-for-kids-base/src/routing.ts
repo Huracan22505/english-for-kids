@@ -12,22 +12,22 @@ const routing = (): void => {
         case 'home':
           mainPageRender();
           break;
-        case 'action-set-a':
+        case 'actionSetA':
           trainingCardsRender(sets.actionSetA);
           break;
-        case 'action-set-b':
+        case 'actionSetB':
           trainingCardsRender(sets.actionSetB);
           break;
-        case 'action-set-c':
+        case 'actionSetC':
           trainingCardsRender(sets.actionSetC);
           break;
         case 'adjective':
           trainingCardsRender(sets.adjective);
           break;
-        case 'animal-set-a':
+        case 'animalSetA':
           trainingCardsRender(sets.animalSetA);
           break;
-        case 'animal-set-b':
+        case 'animalSetB':
           trainingCardsRender(sets.animalSetB);
           break;
         case 'clothes':
@@ -48,22 +48,22 @@ const routing = (): void => {
         case 'home':
           mainPageRender();
           break;
-        case 'action-set-a':
+        case 'actionSetA':
           gameCardsRender(sets.actionSetA);
           break;
-        case 'action-set-b':
+        case 'actionSetB':
           gameCardsRender(sets.actionSetB);
           break;
-        case 'action-set-c':
+        case 'actionSetC':
           gameCardsRender(sets.actionSetC);
           break;
         case 'adjective':
           gameCardsRender(sets.adjective);
           break;
-        case 'animal-set-a':
+        case 'animalSetA':
           gameCardsRender(sets.animalSetA);
           break;
-        case 'animal-set-b':
+        case 'animalSetB':
           gameCardsRender(sets.animalSetB);
           break;
         case 'clothes':
