@@ -1,7 +1,17 @@
 import { categories } from '../../data/categories';
 import './statistic.scss';
 
-const statisticMarkupTemplate = (words: Array<[]>) => `
+const statisticMarkupTemplate = (
+  words: Array<
+    Array<{
+      id: number;
+      text: string;
+      translate: string;
+      audio: string;
+      image: string;
+    }>
+  >,
+) => `
     <section class="statistic-section">
       <h2 class="hidden">Statistic</h2>
       <ul class="category">
@@ -33,17 +43,73 @@ const statisticMarkupTemplate = (words: Array<[]>) => `
     </section>
 `;
 
-const statisticRender = (data: any): void => {
-  // const item = JSON.stringify(data);
-
-  // localStorage.setItem('data', item);
-  // const dataArr = localStorage.getItem('data');
-  // if (typeof dataArr === 'string') {
-  //   const result = JSON.parse(dataArr);
-  //   console.log(result);
-  // }
-
-  const words: Array<[]> = Object.values(data);
+const statisticRender = (data: {
+  actionSetA: Array<{
+    id: number;
+    text: string;
+    translate: string;
+    audio: string;
+    image: string;
+  }>;
+  actionSetB: Array<{
+    id: number;
+    text: string;
+    translate: string;
+    audio: string;
+    image: string;
+  }>;
+  actionSetC: Array<{
+    id: number;
+    text: string;
+    translate: string;
+    audio: string;
+    image: string;
+  }>;
+  adjective: Array<{
+    id: number;
+    text: string;
+    translate: string;
+    audio: string;
+    image: string;
+  }>;
+  animalSetA: Array<{
+    id: number;
+    text: string;
+    translate: string;
+    audio: string;
+    image: string;
+  }>;
+  animalSetB: Array<{
+    id: number;
+    text: string;
+    translate: string;
+    audio: string;
+    image: string;
+  }>;
+  clothes: Array<{
+    id: number;
+    text: string;
+    translate: string;
+    audio: string;
+    image: string;
+  }>;
+  emotions: Array<{
+    id: number;
+    text: string;
+    translate: string;
+    audio: string;
+    image: string;
+  }>;
+}): void => {
+  const words: Array<
+    Array<{
+      id: number;
+      text: string;
+      translate: string;
+      audio: string;
+      image: string;
+    }>
+  > = Object.values(data);
 
   const mainPage = document.getElementById('main') as HTMLElement;
   mainPage.innerHTML = statisticMarkupTemplate(words);
