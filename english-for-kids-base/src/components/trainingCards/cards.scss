@@ -1,6 +1,4 @@
 .cards-field {
-  margin-top: 30px;
-
   width: 1008px;
 
   display: flex;
@@ -8,6 +6,20 @@
 
   // background: rgba(0, 0, 0, 0.05);
   border-radius: 5px;
+
+  @media screen and (max-width: 1439px) {
+    width: 800px;
+
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 1199px) {
+    width: 600px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 300px;
+  }
 }
 
 .score-container {
@@ -15,8 +27,19 @@
   align-items: center;
   justify-content: space-between;
 
+  .star {
+    @media screen and (max-width: 767px) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
   .star + .star {
     margin-left: 8px;
+
+    @media screen and (max-width: 767px) {
+      margin-left: 4px;
+    }
   }
 }
 
@@ -31,7 +54,7 @@
   font-family: Roboto;
   font-weight: 700;
   font-size: 24px;
-  line-height: 28px;
+  line-height: 1.17;
   text-transform: uppercase;
 
   color: #ffffff;
@@ -42,6 +65,13 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   cursor: pointer;
+
+  @media screen and (max-width: 767px) {
+    width: 46px;
+    height: 46px;
+
+    font-size: 12px;
+  }
 
   // &:hover {
   //   background: #2ee59d;
@@ -56,31 +86,14 @@
   // }
 }
 
-.win-img {
-  width: 800px;
-  height: 450px;
-
-  border-radius: 8px;
-
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-}
-
-.failure-msg {
-  font-family: Roboto;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 26px;
-  color: #000000;
-
-  text-align: center;
-}
-
 // CARDS
 
 .card-container {
-  width: 200px;
+  width: 220px;
   height: 200px;
-  margin: 20px;
+
+  margin: 16px;
+
   display: flex;
   align-items: center;
   perspective: 25rem;
@@ -89,6 +102,18 @@
   // & > .card:hover {
   //   box-shadow: 0 0 1rem rgba(59, 220, 231, 0.842);
   // }
+
+  @media screen and (max-width: 1199px) {
+    width: 160px;
+    height: 150px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 138px;
+    height: 150px;
+
+    margin: 6px;
+  }
 
   &.flipped > .card {
     transform: rotateY(180deg) translateX(-100%);
@@ -122,9 +147,13 @@
 
     color: #000000;
     font-size: 22px;
-    line-height: 26px;
+    line-height: 1.183;
     text-align: center;
     background-color: rgba(81, 197, 35, 0.7);
+
+    @media screen and (max-width: 1199px) {
+      transform: translate(-50%, 49px);
+    }
   }
 
   .btn {
@@ -176,4 +205,33 @@
   opacity: 0.3;
 
   z-index: 10000;
+}
+
+.win-img {
+  width: 800px;
+  height: 450px;
+
+  border-radius: 8px;
+
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+
+  @media screen and (max-width: 1199px) {
+    width: 700px;
+    height: 392px;
+  }
+
+  @media screen and (max-width: 1199px) {
+    width: 300px;
+    height: 168px;
+  }
+}
+
+.failure-msg {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  color: #000000;
+
+  text-align: center;
 }
