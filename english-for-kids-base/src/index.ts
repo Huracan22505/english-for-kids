@@ -1,5 +1,6 @@
 import { headerRender } from './components/header/header';
 import { routing } from './routing';
+import { sets } from './data/sets';
 import './style.scss';
 
 headerRender();
@@ -34,3 +35,9 @@ modeSwitcher.addEventListener('change', () => {
 
   routing();
 });
+
+const statistic = sets;
+
+if (!localStorage.getItem('statistic')) {
+  localStorage.setItem('statistic', JSON.stringify(statistic));
+}
