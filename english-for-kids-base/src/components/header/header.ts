@@ -16,6 +16,12 @@ const headerMarkupTemplate = `
             width="50px"
             height="50px"
           />
+          <img
+            src="https://media3.giphy.com/media/I3QPmzziCcTcY/giphy.gif"
+            alt=""
+            width="50px"
+            height="50px"
+          />
           <h1>English For Kids</h1>
           <div class="mode-switcher">
            <p class="text">Train</p>
@@ -67,6 +73,19 @@ const headerRender = (): void => {
       sidebar.classList.toggle('sidebarActive');
       backdrop?.classList.toggle('hidden');
       burgerBtn.src = './burger-icon.png';
+    }
+  });
+
+  sidebar.addEventListener('click', e => {
+    const [...links] = document.querySelectorAll('.sidebar .link');
+    const target = e.target as HTMLElement;
+
+    if (target.classList.contains('link')) {
+      links.forEach(link => link.classList.remove('sidebar-active-link'));
+      target.classList.add('sidebar-active-link');
+      sidebar.classList.toggle('sidebarActive');
+      burgerBtn.src = './burger-icon.png';
+      backdrop?.classList.toggle('hidden');
     }
   });
 };

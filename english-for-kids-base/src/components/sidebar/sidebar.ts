@@ -8,18 +8,18 @@ const sidebarMarkupTemplate = (
   }>,
 ): string => `
     <aside class="sidebar">
-      <a href="#home"><h2>Main Page</h2></a>
+      <h2><a href="#home" class="link sidebar-active-link">Main Page</a></h2>
       <ul class="sidebar-list">
       ${data
-    .map(
-      el =>
-        `<li class="item">
-          <a href="#${el.route}">${el.category}</a>
+        .map(
+          el =>
+            `<li class="item">
+          <a class="link" href="#${el.route}">${el.category}</a>
         </li>`,
-    )
-    .join('')}
+        )
+        .join('')}
           <li class="item">
-            <a href="#statistic">Statistic</a>
+            <a class="link" href="#statistic">Statistic</a>
           </li>
       </ul>
     </aside>
