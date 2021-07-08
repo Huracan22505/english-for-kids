@@ -1,10 +1,12 @@
 import { categories } from '../../data/categories';
 import { Set } from '../../shared/types';
 import { getSuccessPercents } from '../../shared/utils/getPercents';
+import { sets } from '../../data/sets';
 import './statistic.scss';
 
 const statisticMarkupTemplate = (words: Array<Array<Set>>) => `
     <section class="statistic-section">
+      <button class="reset-btn" type="button">Reset</button>
       <h2 class="hidden">Statistic</h2>
       <ul class="category">
         ${categories
@@ -48,6 +50,20 @@ const statisticRender = (): void => {
 
   const mainPage = document.getElementById('main') as HTMLElement;
   mainPage.innerHTML = statisticMarkupTemplate(words);
+
+  const resetBtn = document.querySelector('.reset-btn') as HTMLElement;
+
+  resetBtn.addEventListener('click', () => {
+    localStorage.clear();
+
+    const statistic = sets;
+
+    if (!localStorage.getItem('statistic')) {
+      localStorage.setItem('statistic', JSON.stringify(statistic));
+    }
+
+    statisticRender();
+  });
 };
 
 export { statisticRender };
