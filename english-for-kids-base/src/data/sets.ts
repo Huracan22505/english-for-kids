@@ -6,6 +6,9 @@ export const sets = {
       translate: 'Плакать',
       audio: './audio/cry.mp3',
       image: './images/cry.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 2,
@@ -13,6 +16,9 @@ export const sets = {
       translate: 'Танцевать',
       audio: './audio/dance.mp3',
       image: './images/dance.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 3,
@@ -20,6 +26,9 @@ export const sets = {
       translate: 'Нырять',
       audio: './audio/dive.mp3',
       image: './images/dive.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 4,
@@ -27,6 +36,9 @@ export const sets = {
       translate: 'Рисовать',
       audio: './audio/draw.mp3',
       image: './images/draw.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 5,
@@ -34,6 +46,9 @@ export const sets = {
       translate: 'Рыбачить',
       audio: './audio/fish.mp3',
       image: './images/fish.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 6,
@@ -41,6 +56,9 @@ export const sets = {
       translate: 'Летать',
       audio: './audio/fly.mp3',
       image: './images/fly.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 7,
@@ -48,6 +66,9 @@ export const sets = {
       translate: 'Смеяться',
       audio: './audio/laugh.mp3',
       image: './images/laugh.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 8,
@@ -55,6 +76,9 @@ export const sets = {
       translate: 'Открывать',
       audio: './audio/open.mp3',
       image: './images/open.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
   ],
   actionSetB: [
@@ -64,6 +88,9 @@ export const sets = {
       translate: 'Показывать',
       audio: './audio/point.mp3',
       image: './images/point.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 2,
@@ -71,6 +98,9 @@ export const sets = {
       translate: 'Играть',
       audio: './audio/play.mp3',
       image: './images/play.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 3,
@@ -78,6 +108,9 @@ export const sets = {
       translate: 'Ездить',
       audio: './audio/ride.mp3',
       image: './images/ride.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 4,
@@ -85,6 +118,9 @@ export const sets = {
       translate: 'Бежать',
       audio: './audio/run.mp3',
       image: './images/run.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 5,
@@ -92,6 +128,9 @@ export const sets = {
       translate: 'Петь',
       audio: './audio/sing.mp3',
       image: './images/sing.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 6,
@@ -99,6 +138,9 @@ export const sets = {
       translate: 'Подпрыгивать',
       audio: './audio/skip.mp3',
       image: './images/skip.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 7,
@@ -106,6 +148,9 @@ export const sets = {
       translate: 'Улыбаться',
       audio: './audio/smile.mp3',
       image: './images/smile.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 8,
@@ -113,6 +158,9 @@ export const sets = {
       translate: 'Плавать',
       audio: './audio/swim.mp3',
       image: './images/swim.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
   ],
   actionSetC: [
@@ -122,6 +170,9 @@ export const sets = {
       translate: 'Слушать',
       audio: './audio/listen.mp3',
       image: './images/listen.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 2,
@@ -129,6 +180,9 @@ export const sets = {
       translate: 'Читать',
       audio: './audio/read.mp3',
       image: './images/read.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 3,
@@ -136,6 +190,9 @@ export const sets = {
       translate: 'Кричать',
       audio: './audio/shout.mp3',
       image: './images/shout.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 4,
@@ -143,6 +200,9 @@ export const sets = {
       translate: 'Есть',
       audio: './audio/eat.mp3',
       image: './images/eat.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 5,
@@ -150,6 +210,9 @@ export const sets = {
       translate: 'Думать',
       audio: './audio/think.mp3',
       image: './images/think.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 6,
@@ -157,6 +220,9 @@ export const sets = {
       translate: 'Касаться',
       audio: './audio/touch.mp3',
       image: './images/touch.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 7,
@@ -164,6 +230,9 @@ export const sets = {
       translate: 'Ожидать',
       audio: './audio/wait.mp3',
       image: './images/wait.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 8,
@@ -171,6 +240,9 @@ export const sets = {
       translate: 'Спрашивать',
       audio: './audio/ask.mp3',
       image: './images/ask.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
   ],
   adjective: [
@@ -180,6 +252,9 @@ export const sets = {
       translate: 'Толстый',
       audio: './audio/fat.mp3',
       image: './images/fat.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 2,
@@ -187,6 +262,9 @@ export const sets = {
       translate: 'Худой',
       audio: './audio/thin.mp3',
       image: './images/thin.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 3,
@@ -194,6 +272,9 @@ export const sets = {
       translate: 'Любезный',
       audio: './audio/gracious.mp3',
       image: './images/gracious.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 4,
@@ -201,6 +282,9 @@ export const sets = {
       translate: 'Мудрый',
       audio: './audio/wise.mp3',
       image: './images/wise.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 5,
@@ -208,6 +292,9 @@ export const sets = {
       translate: 'Обманчивый',
       audio: './audio/deceptive.mp3',
       image: './images/deceptive.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 6,
@@ -215,6 +302,9 @@ export const sets = {
       translate: 'Злой',
       audio: './audio/evil.mp3',
       image: './images/evil.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 7,
@@ -222,6 +312,9 @@ export const sets = {
       translate: 'Хитрый',
       audio: './audio/cunning.mp3',
       image: './images/cunning.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 8,
@@ -229,6 +322,9 @@ export const sets = {
       translate: 'Преданный',
       audio: './audio/loyal.mp3',
       image: './images/loyal.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
   ],
   animalSetA: [
@@ -238,6 +334,9 @@ export const sets = {
       translate: 'Птица',
       audio: './audio/bird.mp3',
       image: './images/bird.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 2,
@@ -245,6 +344,9 @@ export const sets = {
       translate: 'Кот',
       audio: './audio/cat.mp3',
       image: './images/cat.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 3,
@@ -252,6 +354,9 @@ export const sets = {
       translate: 'Цыпленок',
       audio: './audio/chick.mp3',
       image: './images/chick.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 4,
@@ -259,6 +364,9 @@ export const sets = {
       translate: 'Курица',
       audio: './audio/chicken.mp3',
       image: './images/chicken.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 5,
@@ -266,6 +374,9 @@ export const sets = {
       translate: 'Собака',
       audio: './audio/dog.mp3',
       image: './images/dog.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 6,
@@ -273,6 +384,9 @@ export const sets = {
       translate: 'Дельфин',
       audio: './audio/dolphin.mp3',
       image: './images/dolphin.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 7,
@@ -280,6 +394,9 @@ export const sets = {
       translate: 'Рыба',
       audio: './audio/fish.mp3',
       image: './images/fish1.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 8,
@@ -287,6 +404,9 @@ export const sets = {
       translate: 'Жаба',
       audio: './audio/frog.mp3',
       image: './images/frog.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
   ],
   animalSetB: [
@@ -296,6 +416,9 @@ export const sets = {
       translate: 'Жираф',
       audio: './audio/giraffe.mp3',
       image: './images/giraffe.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 2,
@@ -303,6 +426,9 @@ export const sets = {
       translate: 'Лошадь',
       audio: './audio/horse.mp3',
       image: './images/horse.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 3,
@@ -310,6 +436,9 @@ export const sets = {
       translate: 'Лев',
       audio: './audio/lion.mp3',
       image: './images/lion.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 4,
@@ -317,6 +446,9 @@ export const sets = {
       translate: 'Мышь',
       audio: './audio/mouse.mp3',
       image: './images/mouse.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 5,
@@ -324,6 +456,9 @@ export const sets = {
       translate: 'Собака',
       audio: './audio/dog.mp3',
       image: './images/dog.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 6,
@@ -331,6 +466,9 @@ export const sets = {
       translate: 'Хрюшка',
       audio: './audio/pig.mp3',
       image: './images/pig.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 7,
@@ -338,6 +476,9 @@ export const sets = {
       translate: 'Черепаха',
       audio: './audio/turtle.mp3',
       image: './images/turtle.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 8,
@@ -345,6 +486,9 @@ export const sets = {
       translate: 'Жаба',
       audio: './audio/frog.mp3',
       image: './images/frog.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
   ],
   clothes: [
@@ -354,6 +498,9 @@ export const sets = {
       translate: 'Ботинок',
       audio: './audio/boot.mp3',
       image: './images/boot.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 2,
@@ -361,6 +508,9 @@ export const sets = {
       translate: 'Пальто',
       audio: './audio/coat.mp3',
       image: './images/coat.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 3,
@@ -368,6 +518,9 @@ export const sets = {
       translate: 'Платье',
       audio: './audio/dress.mp3',
       image: './images/dress.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 4,
@@ -375,6 +528,9 @@ export const sets = {
       translate: 'Штаны',
       audio: './audio/pants.mp3',
       image: './images/pants.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 5,
@@ -382,6 +538,9 @@ export const sets = {
       translate: 'Рубашка',
       audio: './audio/shirt.mp3',
       image: './images/shirt.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 6,
@@ -389,6 +548,9 @@ export const sets = {
       translate: 'Обувь',
       audio: './audio/shoe.mp3',
       image: './images/shoe.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 7,
@@ -396,6 +558,9 @@ export const sets = {
       translate: 'Юбка',
       audio: './audio/skirt.mp3',
       image: './images/skirt.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 8,
@@ -403,6 +568,9 @@ export const sets = {
       translate: 'Блуза',
       audio: './audio/blouse.mp3',
       image: './images/blouse.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
   ],
   emotions: [
@@ -412,6 +580,9 @@ export const sets = {
       translate: 'Сердитый',
       audio: './audio/angry.mp3',
       image: './images/angry.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 2,
@@ -419,6 +590,9 @@ export const sets = {
       translate: 'Счастливый',
       audio: './audio/happy.mp3',
       image: './images/happy.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 3,
@@ -426,6 +600,9 @@ export const sets = {
       translate: 'Грустный',
       audio: './audio/sad.mp3',
       image: './images/sad.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 4,
@@ -433,6 +610,9 @@ export const sets = {
       translate: 'Испуганный',
       audio: './audio/scared.mp3',
       image: './images/scared.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 5,
@@ -440,6 +620,9 @@ export const sets = {
       translate: 'Удивлен',
       audio: './audio/surprised.mp3',
       image: './images/surprised.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 6,
@@ -447,6 +630,9 @@ export const sets = {
       translate: 'Усталый',
       audio: './audio/tired.mp3',
       image: './images/tired.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 7,
@@ -454,6 +640,9 @@ export const sets = {
       translate: 'Наслаждение',
       audio: './audio/pleasure.mp3',
       image: './images/pleasure.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
     {
       id: 8,
@@ -461,6 +650,9 @@ export const sets = {
       translate: 'Отвращение',
       audio: './audio/disgust.mp3',
       image: './images/disgust.jpg',
+      clicks: 0,
+      success: 0,
+      mistakes: 0,
     },
   ],
 };
