@@ -5,8 +5,8 @@ const trainingCardsMarkupTemplate = (
   data: Array<Set>,
 ) => `<div class="cards-field">
       ${data
-        .map(
-          el => `
+    .map(
+      el => `
       <div class="card-container flipped">
         <div class="card">
           <div
@@ -27,8 +27,8 @@ const trainingCardsMarkupTemplate = (
           </div>
         </div>
       </div>`,
-        )
-        .join(' ')}
+    )
+    .join(' ')}
     </div>
 `;
 
@@ -52,7 +52,6 @@ const trainingCardsRender = (data: Array<Set>): void => {
       if (typeof localStore !== 'string') return;
 
       const dataStorage = JSON.parse(localStore);
-      // const ourData: { [index: string]: Array<Set> } = { ...dataStorage };
       const targetSet: Array<Set> = dataStorage[location];
 
       const filteredArr = targetSet.filter(

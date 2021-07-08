@@ -11,13 +11,13 @@ const sidebarMarkupTemplate = (
       <h2><a href="#home" class="link sidebar-active-link">Main Page</a></h2>
       <ul class="sidebar-list">
       ${data
-        .map(
-          el =>
-            `<li class="item">
+    .map(
+      el =>
+        `<li class="item">
           <a class="link" href="#${el.route}">${el.category}</a>
         </li>`,
-        )
-        .join('')}
+    )
+    .join('')}
           <li class="item">
             <a class="link" href="#statistic">Statistic</a>
           </li>

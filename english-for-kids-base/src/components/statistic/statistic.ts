@@ -10,8 +10,8 @@ const statisticMarkupTemplate = (words: Array<Array<Set>>) => `
       <h2 class="hidden">Statistic</h2>
       <ul class="category">
         ${categories
-          .map(
-            (el, i) => `
+    .map(
+      (el, i) => `
         <li class="item">
           <div>
             <h3 class="title">${el.category}</h3>
@@ -19,8 +19,8 @@ const statisticMarkupTemplate = (words: Array<Array<Set>>) => `
           </div>
           <ul class="words-list">
             ${words[i]
-              .map(
-                (ele: Set) => `
+    .map(
+      (ele: Set) => `
             <li class="word-list-item">
               <p>${ele.text}</p>
               <p>${ele.translate}</p>
@@ -30,13 +30,13 @@ const statisticMarkupTemplate = (words: Array<Array<Set>>) => `
               <p>Guessing ${getSuccessPercents(ele.success, ele.mistakes)}%</p>
             </li>
             `,
-              )
-              .join(' ')}
+    )
+    .join(' ')}
           </ul>
         </li>
         `,
-          )
-          .join(' ')}
+    )
+    .join(' ')}
       </ul>
     </section>
 `;

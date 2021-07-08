@@ -36,6 +36,8 @@ modeSwitcher.addEventListener('change', () => {
   routing();
 });
 
+// CODE DUPLICATE
+
 const statistic = sets;
 
 if (!localStorage.getItem('statistic')) {

@@ -14,8 +14,8 @@ const gameCardsMarkupTemplate = (
 ) => `
     <div class="cards-field">
       ${data
-        .map(
-          el => `
+    .map(
+      el => `
       <div class="card-container">
         <div class="card">
           <div class="card-cover hidden"></div>
@@ -28,8 +28,8 @@ const gameCardsMarkupTemplate = (
         </div>
       </div>
       `,
-        )
-        .join(' ')}
+    )
+    .join(' ')}
     </div>
     <div class="score-container">
     <div class="score"></div>
@@ -108,8 +108,8 @@ const gameCardsRender = (
               playAudio('./audio/failure.mp3');
               mainPage.innerHTML = `<img class="win-img" src="./images/failure.gif" alt="you win" />
               <p class="failure-msg" >You made ${mistakes} ${
-                mistakes > 1 ? 'mistakes' : 'mistake'
-              }!</p>`;
+  mistakes > 1 ? 'mistakes' : 'mistake'
+}!</p>`;
 
               setTimeout(() => {
                 window.location.hash = '#home';

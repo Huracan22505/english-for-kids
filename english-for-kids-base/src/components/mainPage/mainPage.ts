@@ -14,9 +14,9 @@ const mainPageMarkupTemplate = (
         ${data
     .map(
       el =>
-        `<a href="#${el.route}"><li style="background-image: url(${el.image})" class="item">
+        `<li style="background-image: url(${el.image})" class="item"><a href="#${el.route}">
             <p class="text" >${el.category}</p>
-          </li></a>`,
+          </a></li>`,
     )
     .join(' ')}
         </ul>

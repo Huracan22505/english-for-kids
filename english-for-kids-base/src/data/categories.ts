@@ -11,12 +11,12 @@ export const categories = [
   },
   {
     route: 'actionSetC',
-    category: 'Action (set C)',
-    image: './images/dance.jpg',
+    category: 'Action (HOT)',
+    image: './images/think.jpg',
   },
   {
     route: 'adjective',
-    category: 'Adjective',
+    category: 'Adjective (HOT)',
     image: './images/fat.jpg',
   },
   {
