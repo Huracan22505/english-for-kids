@@ -37,7 +37,7 @@ const routing = (): void => {
           trainingCardsRender(sets.emotions);
           break;
         case 'statistic':
-          statisticRender(sets);
+          statisticRender();
           break;
         default:
           mainPageRender();
@@ -73,7 +73,7 @@ const routing = (): void => {
           gameCardsRender(sets.emotions);
           break;
         case 'statistic':
-          statisticRender(sets);
+          statisticRender();
           break;
         default:
           mainPageRender();

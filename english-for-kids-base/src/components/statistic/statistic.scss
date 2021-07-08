@@ -35,7 +35,7 @@
     align-items: center;
     flex-direction: column;
 
-    width: 150px;
+    width: 130px;
     height: 100px;
 
     border-radius: 8px;
@@ -45,5 +45,9 @@
 
   .word-list-item {
     margin-left: 10px;
+  }
+
+  p {
+    font-size: 14px;
   }
 }
