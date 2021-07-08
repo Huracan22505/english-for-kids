@@ -1,17 +1,12 @@
 import { playAudio } from '../../shared/utils/audio';
+import { Set } from '../../shared/types';
 
 const trainingCardsMarkupTemplate = (
-  data: Array<{
-    id: number;
-    text: string;
-    translate: string;
-    audio: string;
-    image: string;
-  }>,
+  data: Array<Set>,
 ) => `<div class="cards-field">
       ${data
-    .map(
-      el => `
+        .map(
+          el => `
       <div class="card-container flipped">
         <div class="card">
           <div
@@ -32,20 +27,12 @@ const trainingCardsMarkupTemplate = (
           </div>
         </div>
       </div>`,
-    )
-    .join(' ')}
+        )
+        .join(' ')}
     </div>
 `;
 
-const trainingCardsRender = (
-  data: Array<{
-    id: number;
-    text: string;
-    translate: string;
-    audio: string;
-    image: string;
-  }>,
-): void => {
+const trainingCardsRender = (data: Array<Set>): void => {
   const mainPage = document.getElementById('main') as HTMLElement;
   mainPage.innerHTML = trainingCardsMarkupTemplate(data);
 
@@ -57,6 +44,26 @@ const trainingCardsRender = (
     const targetId = target.dataset.id;
     const targetAudio = target.dataset.audio;
 
+    if (targetAudio) {
+      playAudio(targetAudio);
+      const location = window.location.hash.slice(1);
+
+      const localStore = localStorage.getItem('statistic');
+      if (typeof localStore !== 'string') return;
+
+      const dataStorage = JSON.parse(localStore);
+      // const ourData: { [index: string]: Array<Set> } = { ...dataStorage };
+      const targetSet: Array<Set> = dataStorage[location];
+
+      const filteredArr = targetSet.filter(
+        (el: Set) => el.audio === targetAudio,
+      );
+      const targetStorageObj = filteredArr[0];
+
+      targetStorageObj.clicks += 1;
+      localStorage.setItem('statistic', JSON.stringify(dataStorage));
+    }
+
     if (targetId) {
       cardContainers[Number(targetId) - 1].classList.remove('flipped');
 
@@ -67,10 +74,6 @@ const trainingCardsRender = (
           cardContainers[Number(targetId) - 1].classList.add('flipped');
         }
       });
-    }
-
-    if (targetAudio) {
-      playAudio(targetAudio);
     }
   });
 };
