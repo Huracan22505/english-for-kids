@@ -1,5 +1,6 @@
 import { categories } from '../../data/categories';
 import { Set } from '../../shared/types';
+import { getSuccessPercents } from '../../shared/utils/getPercents';
 import './statistic.scss';
 
 const statisticMarkupTemplate = (words: Array<Array<Set>>) => `
@@ -24,7 +25,7 @@ const statisticMarkupTemplate = (words: Array<Array<Set>>) => `
               <p>Training clicks: ${ele.clicks}</p>
               <p>Guessing: ${ele.success}</p>
               <p>Mistakes: ${ele.mistakes}</p>
-              <p>Mistakes %</p>
+              <p>Guessing ${getSuccessPercents(ele.success, ele.mistakes)}%</p>
             </li>
             `,
               )
