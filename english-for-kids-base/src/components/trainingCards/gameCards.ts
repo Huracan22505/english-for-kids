@@ -1,5 +1,6 @@
 import { playAudio } from '../../shared/utils/audio';
 import { shuffle } from '../../shared/utils/shuffleArr';
+import { Set } from '../../shared/types';
 import './cards.scss';
 
 const gameCardsMarkupTemplate = (
@@ -79,6 +80,7 @@ const gameCardsRender = (
 
       cardField.addEventListener('click', e => {
         const target = <HTMLElement>e.target;
+        const location = window.location.hash.slice(1);
 
         if (target.classList.contains('card__front')) {
           const targetId = target.dataset.id;
@@ -87,6 +89,20 @@ const gameCardsRender = (
 
           if (targetAudio === shuffledArr[0]) {
             score += 1;
+
+            // LOCAL STORAGE
+            const localStore = localStorage.getItem('statistic');
+            if (typeof localStore !== 'string') return;
+
+            const dataStorage = JSON.parse(localStore);
+            const targetSet: Array<Set> = dataStorage[location];
+
+            const filteredArr = targetSet.filter(
+              (el: Set) => el.audio === targetAudio,
+            );
+            const targetStorageObj = filteredArr[0];
+            targetStorageObj.success += 1;
+            localStorage.setItem('statistic', JSON.stringify(dataStorage));
 
             if (score === 8 && mistakes !== 0) {
               playAudio('./audio/failure.mp3');
@@ -121,12 +137,27 @@ const gameCardsRender = (
             cardCovers[Number(targetId) - 1].classList.remove('hidden');
 
             playAudio('./audio/correct.mp3');
+
             setTimeout(() => {
               shuffledArr.shift();
               playAudio(shuffledArr[0]);
             }, 700);
           } else {
             mistakes += 1;
+
+            // LOCAL STORAGE
+            const localStore = localStorage.getItem('statistic');
+            if (typeof localStore !== 'string') return;
+
+            const dataStorage = JSON.parse(localStore);
+            const targetSet: Array<Set> = dataStorage[location];
+
+            const filteredArr = targetSet.filter(
+              (el: Set) => el.audio === shuffledArr[0],
+            );
+            const targetStorageObj = filteredArr[0];
+            targetStorageObj.mistakes += 1;
+            localStorage.setItem('statistic', JSON.stringify(dataStorage));
 
             if (starsCount.length > 7) scoreContainer?.lastChild?.remove();
             scoreContainer?.insertAdjacentHTML(
