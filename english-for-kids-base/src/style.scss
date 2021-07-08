@@ -63,6 +63,33 @@ img {
   padding-left: 216px;
   padding-right: 216px;
   margin: 0 auto;
+
+  @media screen and (max-width: 1439px) {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 200px;
+    padding-right: 200px;
+
+    width: 1200px;
+  }
+
+  @media screen and (max-width: 1199px) {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 100px;
+    padding-right: 100px;
+
+    width: 768px;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    width: 320px;
+  }
 }
 
 .button {
