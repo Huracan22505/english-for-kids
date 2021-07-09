@@ -4,10 +4,7 @@ import { getSuccessPercents } from '../../shared/utils/getPercents';
 import { sets } from '../../data/sets';
 import './statistic.scss';
 
-const statisticMarkupTemplate = (words: Array<Array<Set>>) => `
-    <section class="statistic-section">
-      <button class="reset-btn" type="button">Reset</button>
-      <h2 class="hidden">Statistic</h2>
+const categoriesMarkupTemplate = (words: Array<Array<Set>>) => `
       <ul class="category">
         ${categories
     .map(
@@ -38,6 +35,19 @@ const statisticMarkupTemplate = (words: Array<Array<Set>>) => `
     )
     .join(' ')}
       </ul>
+`;
+
+const statisticMarkupTemplate = (words: Array<Array<Set>>) => `
+    <section class="statistic-section">
+    <div class="stats-filters">
+      <button class="stats-btn reset-btn" type="button">Reset</button>
+      <button class="stats-btn sort-alphabet-btn" type="button">Sort by alphabet</button>
+      <button class="stats-btn sort-guessing-btn" type="button">Sort by guessing</button>
+    </div>
+      <h2 class="hidden">Statistic</h2>
+      <div id="stats-table">
+      ${categoriesMarkupTemplate(words)}
+      </div>
     </section>
 `;
 
@@ -52,6 +62,9 @@ const statisticRender = (): void => {
   mainPage.innerHTML = statisticMarkupTemplate(words);
 
   const resetBtn = document.querySelector('.reset-btn') as HTMLElement;
+  const sortAlphabetBtn = document.querySelector(
+    '.sort-alphabet-btn',
+  ) as HTMLElement;
 
   resetBtn.addEventListener('click', () => {
     localStorage.clear();
@@ -63,6 +76,24 @@ const statisticRender = (): void => {
     }
 
     statisticRender();
+  });
+
+  const statsTable = document.getElementById('stats-table') as HTMLElement;
+
+  sortAlphabetBtn.addEventListener('click', () => {
+    if (localStorage.getItem('sortAlphabet') === 'alphabet') {
+      const sortedByAlphabet = words.map(word =>
+        word.sort((a, b) => (a.text < b.text ? 1 : -1)),
+      );
+      statsTable.innerHTML = categoriesMarkupTemplate(sortedByAlphabet);
+      localStorage.setItem('sortAlphabet', 'reverse');
+    } else {
+      const sortedByAlphabet = words.map(word =>
+        word.sort((a, b) => (a.text > b.text ? 1 : -1)),
+      );
+      statsTable.innerHTML = categoriesMarkupTemplate(sortedByAlphabet);
+      localStorage.setItem('sortAlphabet', 'alphabet');
+    }
   });
 };
 

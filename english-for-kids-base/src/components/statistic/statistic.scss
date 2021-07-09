@@ -4,11 +4,19 @@
   justify-content: center;
   flex-direction: column;
 
-  .reset-btn {
+  .stats-filters {
+    display: flex;
+
+    button + button {
+      margin-left: 6px;
+    }
+  }
+
+  .stats-btn {
     margin-bottom: 4px;
 
     width: 70px;
-    height: 25px;
+    height: 40px;
 
     display: flex;
     align-items: center;
