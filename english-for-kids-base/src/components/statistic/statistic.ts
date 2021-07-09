@@ -43,6 +43,7 @@ const statisticMarkupTemplate = (words: Array<Array<Set>>) => `
       <button class="stats-btn reset-btn" type="button">Reset</button>
       <button class="stats-btn sort-alphabet-btn" type="button">Sort by alphabet</button>
       <button class="stats-btn sort-guessing-btn" type="button">Sort by guessing</button>
+      <button class="stats-btn sort-mistakes-btn" type="button">Sort by mistakes</button>
     </div>
       <h2 class="hidden">Statistic</h2>
       <div id="stats-table">
@@ -67,6 +68,9 @@ const statisticRender = (): void => {
   ) as HTMLElement;
   const sortByGuessingBtn = document.querySelector(
     '.sort-guessing-btn',
+  ) as HTMLElement;
+  const sortByMistakesBtn = document.querySelector(
+    '.sort-mistakes-btn',
   ) as HTMLElement;
 
   resetBtn.addEventListener('click', () => {
@@ -112,6 +116,22 @@ const statisticRender = (): void => {
       );
       statsTable.innerHTML = categoriesMarkupTemplate(sortedByGuessing);
       localStorage.setItem('sortGuessing', 'guessing');
+    }
+  });
+
+  sortByMistakesBtn.addEventListener('click', () => {
+    if (localStorage.getItem('sortMistakes') === 'mistakes') {
+      const sortedByMistakes = words.map(word =>
+        word.sort((a, b) => (a.mistakes < b.mistakes ? 1 : -1)),
+      );
+      statsTable.innerHTML = categoriesMarkupTemplate(sortedByMistakes);
+      localStorage.setItem('sortMistakes', 'reverse');
+    } else {
+      const sortedByMistakes = words.map(word =>
+        word.sort((a, b) => (a.mistakes > b.mistakes ? 1 : -1)),
+      );
+      statsTable.innerHTML = categoriesMarkupTemplate(sortedByMistakes);
+      localStorage.setItem('sortMistakes', 'mistakes');
     }
   });
 };
