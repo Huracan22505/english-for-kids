@@ -65,6 +65,9 @@ const statisticRender = (): void => {
   const sortAlphabetBtn = document.querySelector(
     '.sort-alphabet-btn',
   ) as HTMLElement;
+  const sortByGuessingBtn = document.querySelector(
+    '.sort-guessing-btn',
+  ) as HTMLElement;
 
   resetBtn.addEventListener('click', () => {
     localStorage.clear();
@@ -93,6 +96,22 @@ const statisticRender = (): void => {
       );
       statsTable.innerHTML = categoriesMarkupTemplate(sortedByAlphabet);
       localStorage.setItem('sortAlphabet', 'alphabet');
+    }
+  });
+
+  sortByGuessingBtn.addEventListener('click', () => {
+    if (localStorage.getItem('sortGuessing') === 'guessing') {
+      const sortedByGuessing = words.map(word =>
+        word.sort((a, b) => (a.success < b.success ? 1 : -1)),
+      );
+      statsTable.innerHTML = categoriesMarkupTemplate(sortedByGuessing);
+      localStorage.setItem('sortGuessing', 'reverse');
+    } else {
+      const sortedByGuessing = words.map(word =>
+        word.sort((a, b) => (a.success > b.success ? 1 : -1)),
+      );
+      statsTable.innerHTML = categoriesMarkupTemplate(sortedByGuessing);
+      localStorage.setItem('sortGuessing', 'guessing');
     }
   });
 };
