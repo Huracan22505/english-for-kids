@@ -99,9 +99,15 @@
   perspective: 25rem;
   cursor: pointer;
 
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 500ms;
+
   // & > .card:hover {
   //   box-shadow: 0 0 1rem rgba(59, 220, 231, 0.842);
   // }
+
+  &:hover {
+    transform: scale(1.02);
+  }
 
   @media screen and (max-width: 1199px) {
     width: 160px;
