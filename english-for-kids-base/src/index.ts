@@ -33,6 +33,10 @@ modeSwitcher.addEventListener('change', () => {
       break;
   }
 
+  if (window.location.hash.slice(1) === 'statistic') {
+    return;
+  }
+
   routing();
 });
 
