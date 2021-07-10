@@ -1,10 +1,7 @@
-import refs from '../../shared/refs';
-import { sidebarMarkupTemplate } from '../sidebar/sidebar';
-import { backdropMarkup } from '../backdrop/backdrop';
-import { categories } from '../../data/categories';
+import { switcherMarkup } from '../switcher/switcher';
 import './header.scss';
 
-const headerMarkupTemplate = `
+export const headerMarkup = `
     <header class="header">
       <div class="container">
         <div class="header-container">
@@ -23,78 +20,8 @@ const headerMarkupTemplate = `
             height="50px"
           />
           <h1>English For Kids</h1>
-          <div class="mode-switcher">
-           <p class="text">Train</p>
-           <div id="mode-switcher" class="mode-switch__control">
-            <input
-              class="mode-switch__toggle"
-              type="checkbox"
-              name="mode"
-              id="mode-switch-toggle"
-              aria-label="Change mode"
-            />
-             <label
-              aria-hidden="true"
-              class="mode-switch__track"
-              for="mode-switch-toggle"
-            >
-             </label>
-             <div aria-hidden="true" class="mode-switch__marker">
-             </div>
-           </div>
-           <p class="text">Game</p>
-          </div>
+          ${switcherMarkup}
         </div>
       </div>
     </header>
-    ${backdropMarkup}
-    <main id="main"></main>
-    ${sidebarMarkupTemplate(categories)}
-    <footer class="footer">
-    <a href="https://github.com/Huracan22505">Alexander Huracan</a>
-    <p>2021</p>
-    <a href="https://rs.school/js/">
-    <img src="https://rs.school/images/rs_school-og.png" width="40px" alt=""></a>
-  </footer>
-
 `;
-
-const headerRender = (): void => {
-  refs.appElement?.insertAdjacentHTML('afterbegin', headerMarkupTemplate);
-
-  const burgerBtn = document.querySelector('#burgerBtn') as HTMLImageElement;
-  const sidebar = document.querySelector('aside') as HTMLElement;
-  const app = document.querySelector('#app') as HTMLElement;
-  const backdrop = document.querySelector('#cover');
-
-  burgerBtn.addEventListener('click', () => {
-    sidebar.classList.toggle('sidebarActive');
-    backdrop?.classList.toggle('hidden');
-    burgerBtn.src = './close-burger.png';
-  });
-
-  app.addEventListener('click', event => {
-    const target = <HTMLElement>event.target;
-
-    if (target.classList.contains('cover')) {
-      sidebar.classList.toggle('sidebarActive');
-      backdrop?.classList.toggle('hidden');
-      burgerBtn.src = './burger-icon.png';
-    }
-  });
-
-  sidebar.addEventListener('click', e => {
-    const [...links] = document.querySelectorAll('.sidebar .link');
-    const target = e.target as HTMLElement;
-
-    if (target.classList.contains('link')) {
-      links.forEach(link => link.classList.remove('sidebar-active-link'));
-      target.classList.add('sidebar-active-link');
-      sidebar.classList.toggle('sidebarActive');
-      burgerBtn.src = './burger-icon.png';
-      backdrop?.classList.toggle('hidden');
-    }
-  });
-};
-
-export { headerRender };

@@ -3,19 +3,11 @@ import { shuffle } from '../../shared/utils/shuffleArr';
 import { Set } from '../../shared/types';
 import './cards.scss';
 
-const gameCardsMarkupTemplate = (
-  data: Array<{
-    id: number;
-    text: string;
-    translate: string;
-    audio: string;
-    image: string;
-  }>,
-) => `
+const gameCardsMarkupTemplate = (data: Array<Set>) => `
     <div class="cards-field">
       ${data
-    .map(
-      el => `
+        .map(
+          el => `
       <div class="card-container">
         <div class="card">
           <div class="card-cover hidden"></div>
@@ -28,8 +20,8 @@ const gameCardsMarkupTemplate = (
         </div>
       </div>
       `,
-    )
-    .join(' ')}
+        )
+        .join(' ')}
     </div>
     <div class="score-container">
     <div class="score"></div>
@@ -40,15 +32,11 @@ const gameCardsMarkupTemplate = (
     </div>
 `;
 
-const gameCardsRender = (
-  data: Array<{
-    id: number;
-    text: string;
-    translate: string;
-    audio: string;
-    image: string;
-  }>,
-): void => {
+const gameCardsRender = (data: Array<Set>): void => {
+  console.log(
+    '🚀 ~ file: gameCards.ts ~ line 36 ~ gameCardsRender ~ data',
+    data,
+  );
   const mainPage = document.getElementById('main') as HTMLElement;
 
   mainPage.innerHTML = gameCardsMarkupTemplate(data);
@@ -106,10 +94,12 @@ const gameCardsRender = (
 
             if (score === 8 && mistakes !== 0) {
               playAudio('./audio/failure.mp3');
-              mainPage.innerHTML = `<img class="win-img" src="./images/failure.gif" alt="you win" />
-              <p class="failure-msg" >You made ${mistakes} ${
-  mistakes > 1 ? 'mistakes' : 'mistake'
-}!</p>`;
+              mainPage.innerHTML = `<img class="win-img"
+        src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_174772259_2000148320009280397_382964.jpg"
+               alt="you win" />
+              <p class="failure-msg">You made ${mistakes} ${
+                mistakes > 1 ? 'mistakes' : 'mistake'
+              }!</p>`;
 
               setTimeout(() => {
                 window.location.hash = '#home';
