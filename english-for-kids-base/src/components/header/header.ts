@@ -1,6 +1,10 @@
+import { routing } from '../../routing';
+import { LocalStorageKeys, MenuIcons, Mods } from '../../shared/enums';
 import refs from '../../shared/refs';
 import { switcherMarkup } from '../switcher/switcher';
 import './header.scss';
+
+let mode;
 
 export const headerMarkup = `
     <header class="header">
@@ -27,7 +31,32 @@ export const headerMarkup = `
     </header>
 `;
 
-export const headerListeners = (): void => {
+const onModeSwitcherChange = () => {
+  const statisticPage = 'statistic';
+  mode = localStorage.getItem(LocalStorageKeys.Mode);
+
+  switch (mode) {
+    case Mods.Game:
+      localStorage.setItem(LocalStorageKeys.Mode, Mods.Training);
+      break;
+    case Mods.Training:
+      localStorage.setItem(LocalStorageKeys.Mode, Mods.Game);
+      break;
+    default:
+      break;
+  }
+
+  if (window.location.hash.slice(1) === statisticPage) {
+    return;
+  }
+
+  routing();
+};
+
+export const menuHandler = (): void => {
+  const modeSwitcher = document.getElementById('mode-switcher') as HTMLElement;
+  modeSwitcher.addEventListener('change', onModeSwitcherChange);
+
   const burgerBtn = document.querySelector('#burgerBtn') as HTMLImageElement;
   const sidebar = document.querySelector('aside') as HTMLElement;
   const backdrop = document.querySelector('#cover') as HTMLElement;
@@ -35,7 +64,7 @@ export const headerListeners = (): void => {
   burgerBtn.addEventListener('click', () => {
     sidebar.classList.toggle('sidebarActive');
     backdrop?.classList.toggle('hidden');
-    burgerBtn.src = './close-burger.png';
+    burgerBtn.src = MenuIcons.Close;
   });
 
   refs.appElement.addEventListener('click', event => {
@@ -44,7 +73,7 @@ export const headerListeners = (): void => {
     if (target.classList.contains('cover')) {
       sidebar.classList.toggle('sidebarActive');
       backdrop?.classList.toggle('hidden');
-      burgerBtn.src = './burger-icon.png';
+      burgerBtn.src = MenuIcons.Open;
     }
   });
 
@@ -56,7 +85,7 @@ export const headerListeners = (): void => {
       links.forEach(link => link.classList.remove('sidebar-active-link'));
       target.classList.add('sidebar-active-link');
       sidebar.classList.toggle('sidebarActive');
-      burgerBtn.src = './burger-icon.png';
+      burgerBtn.src = MenuIcons.Open;
       backdrop.classList.toggle('hidden');
     }
   });
