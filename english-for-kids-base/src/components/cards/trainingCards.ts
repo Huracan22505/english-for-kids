@@ -1,5 +1,7 @@
 import { playAudio } from '../../shared/utils/audio';
 import { Set } from '../../shared/types';
+import { getDataFromLocalStorage } from '../../shared/utils/localStorage';
+import { LocalStorageKeys } from '../../shared/enums';
 
 const trainingCardsMarkupTemplate = (
   data: Array<Set>,
@@ -32,35 +34,30 @@ const trainingCardsMarkupTemplate = (
     </div>
 `;
 
-const trainingCardsRender = (data: Array<Set>): void => {
-  const mainPage = document.getElementById('main') as HTMLElement;
-  mainPage.innerHTML = trainingCardsMarkupTemplate(data);
-
+const startTraining = () => {
   const cardField = document.querySelector('.cards-field') as HTMLDivElement;
   const [...cardContainers] = document.querySelectorAll('.card-container');
 
   cardField.addEventListener('click', e => {
-    const target = <HTMLButtonElement>e.target;
-    const targetId = target.dataset.id;
-    const targetAudio = target.dataset.audio;
+    const targetElem = <HTMLButtonElement>e.target;
+    const targetId = targetElem.dataset.id;
+    const targetAudio = targetElem.dataset.audio;
 
     if (targetAudio) {
       playAudio(targetAudio);
       const location = window.location.hash.slice(1);
 
-      const localStore = localStorage.getItem('statistic');
-      if (typeof localStore !== 'string') return;
-
-      const dataStorage = JSON.parse(localStore);
+      const dataStorage = getDataFromLocalStorage(LocalStorageKeys.Statistic);
       const targetSet: Array<Set> = dataStorage[location];
-
       const filteredArr = targetSet.filter(
         (el: Set) => el.audio === targetAudio,
       );
       const targetStorageObj = filteredArr[0];
-
       targetStorageObj.clicks += 1;
-      localStorage.setItem('statistic', JSON.stringify(dataStorage));
+      localStorage.setItem(
+        LocalStorageKeys.Statistic,
+        JSON.stringify(dataStorage),
+      );
     }
 
     if (targetId) {
@@ -77,4 +74,9 @@ const trainingCardsRender = (data: Array<Set>): void => {
   });
 };
 
-export { trainingCardsRender };
+export const trainingCardsRender = (data: Array<Set>): void => {
+  const mainPage = document.getElementById('main') as HTMLElement;
+  mainPage.innerHTML = trainingCardsMarkupTemplate(data);
+
+  startTraining();
+};

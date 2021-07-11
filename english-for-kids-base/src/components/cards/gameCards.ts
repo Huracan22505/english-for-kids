@@ -1,13 +1,22 @@
 import { playAudio } from '../../shared/utils/audio';
 import { shuffle } from '../../shared/utils/shuffleArr';
+import { getDataFromLocalStorage } from '../../shared/utils/localStorage';
+import {
+  Delays,
+  EndGameImg,
+  LocalStorageKeys,
+  ScoreImg,
+  Audio,
+  Scores,
+} from '../../shared/enums';
 import { Set } from '../../shared/types';
 import './cards.scss';
 
 const gameCardsMarkupTemplate = (data: Array<Set>) => `
     <div class="cards-field">
       ${data
-        .map(
-          el => `
+    .map(
+      el => `
       <div class="card-container">
         <div class="card">
           <div class="card-cover hidden"></div>
@@ -20,8 +29,8 @@ const gameCardsMarkupTemplate = (data: Array<Set>) => `
         </div>
       </div>
       `,
-        )
-        .join(' ')}
+    )
+    .join(' ')}
     </div>
     <div class="score-container">
     <div class="score"></div>
@@ -32,22 +41,15 @@ const gameCardsMarkupTemplate = (data: Array<Set>) => `
     </div>
 `;
 
-const gameCardsRender = (data: Array<Set>): void => {
-  console.log(
-    '🚀 ~ file: gameCards.ts ~ line 36 ~ gameCardsRender ~ data',
-    data,
-  );
+const startGame = (data: Array<Set>) => {
   const mainPage = document.getElementById('main') as HTMLElement;
-
-  mainPage.innerHTML = gameCardsMarkupTemplate(data);
-
   const startBtn = document.querySelector('.start-btn') as HTMLButtonElement;
   const cardField = document.querySelector('.cards-field') as HTMLDivElement;
   const [...cardContainers] = document.querySelectorAll('.card-container');
   const [...cardCovers] = document.querySelectorAll('.card-cover');
 
   const audioArr = data.map(el => el.audio);
-  const shuffledArr = shuffle(audioArr);
+  const shuffledAudioArr = shuffle(audioArr);
 
   startBtn.addEventListener(
     'click',
@@ -58,67 +60,72 @@ const gameCardsRender = (data: Array<Set>): void => {
 
       let score = 0;
       let mistakes = 0;
+      const starsLimit = 7;
+      const homeView = '#home';
 
       startBtnText?.classList.add('hidden');
       startBtnImg?.classList.remove('hidden');
+      playAudio(shuffledAudioArr[0]);
 
-      playAudio(shuffledArr[0]);
-
-      startBtn.addEventListener('click', () => playAudio(shuffledArr[0]));
+      startBtn.addEventListener('click', () => playAudio(shuffledAudioArr[0]));
 
       cardField.addEventListener('click', e => {
-        const target = <HTMLElement>e.target;
+        const targetElem = <HTMLElement>e.target;
         const location = window.location.hash.slice(1);
 
-        if (target.classList.contains('card__front')) {
-          const targetId = target.dataset.id;
-          const targetAudio = target.dataset.audio;
+        if (targetElem.classList.contains('card__front')) {
+          const targetId = targetElem.dataset.id;
+          const targetAudio = targetElem.dataset.audio;
           const [...starsCount] = document.querySelectorAll('.star');
 
-          if (targetAudio === shuffledArr[0]) {
+          if (targetAudio === shuffledAudioArr[0]) {
+            playAudio(Audio.Success);
             score += 1;
 
-            // LOCAL STORAGE
-            const localStore = localStorage.getItem('statistic');
-            if (typeof localStore !== 'string') return;
-
-            const dataStorage = JSON.parse(localStore);
+            const dataStorage = getDataFromLocalStorage(
+              LocalStorageKeys.Statistic,
+            );
             const targetSet: Array<Set> = dataStorage[location];
-
             const filteredArr = targetSet.filter(
               (el: Set) => el.audio === targetAudio,
             );
             const targetStorageObj = filteredArr[0];
             targetStorageObj.success += 1;
-            localStorage.setItem('statistic', JSON.stringify(dataStorage));
+            localStorage.setItem(
+              LocalStorageKeys.Statistic,
+              JSON.stringify(dataStorage),
+            );
 
-            if (score === 8 && mistakes !== 0) {
-              playAudio('./audio/failure.mp3');
-              mainPage.innerHTML = `<img class="win-img"
-        src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_174772259_2000148320009280397_382964.jpg"
+            if (score === Scores.Win && mistakes !== Scores.NoMistakes) {
+              playAudio(Audio.Failure);
+              mainPage.innerHTML = `<img class="win-img" src=${
+                EndGameImg.Failure
+              }
                alt="you win" />
               <p class="failure-msg">You made ${mistakes} ${
-                mistakes > 1 ? 'mistakes' : 'mistake'
-              }!</p>`;
+  mistakes > 1 ? 'mistakes' : 'mistake'
+}!</p>`;
 
               setTimeout(() => {
-                window.location.hash = '#home';
-              }, 2500);
+                window.location.hash = homeView;
+              }, Delays.Failure);
             }
 
-            if (score === 8 && mistakes === 0) {
-              playAudio('./audio/success.mp3');
-              mainPage.innerHTML = `<img class="win-img" src="./images/win.gif" alt="you win" />`;
+            if (score === Scores.Win && mistakes === Scores.NoMistakes) {
+              playAudio(Audio.Win);
+              mainPage.innerHTML = `<img class="win-img" src=${EndGameImg.Win} alt="you win" />`;
 
               setTimeout(() => {
-                window.location.hash = '#home';
-              }, 3000);
+                window.location.hash = homeView;
+              }, Delays.Win);
             }
 
-            if (starsCount.length > 7) scoreContainer?.lastChild?.remove();
+            if (starsCount.length > starsLimit)
+              scoreContainer?.lastChild?.remove();
+
             scoreContainer?.insertAdjacentHTML(
               'afterbegin',
-              `<img class="star" src="./images/star-win.png" alt="success">`,
+              `<img class="star" src=${ScoreImg.Success} alt="success">`,
             );
 
             cardContainers[Number(targetId) - 1].classList.add(
@@ -126,36 +133,36 @@ const gameCardsRender = (data: Array<Set>): void => {
             );
             cardCovers[Number(targetId) - 1].classList.remove('hidden');
 
-            playAudio('./audio/correct.mp3');
-
             setTimeout(() => {
-              shuffledArr.shift();
-              playAudio(shuffledArr[0]);
-            }, 700);
+              shuffledAudioArr.shift();
+              playAudio(shuffledAudioArr[0]);
+            }, Delays.NextAudio);
           } else {
             mistakes += 1;
 
-            // LOCAL STORAGE
-            const localStore = localStorage.getItem('statistic');
-            if (typeof localStore !== 'string') return;
-
-            const dataStorage = JSON.parse(localStore);
+            const dataStorage = getDataFromLocalStorage(
+              LocalStorageKeys.Statistic,
+            );
             const targetSet: Array<Set> = dataStorage[location];
-
             const filteredArr = targetSet.filter(
-              (el: Set) => el.audio === shuffledArr[0],
+              (el: Set) => el.audio === shuffledAudioArr[0],
             );
             const targetStorageObj = filteredArr[0];
             targetStorageObj.mistakes += 1;
-            localStorage.setItem('statistic', JSON.stringify(dataStorage));
-
-            if (starsCount.length > 7) scoreContainer?.lastChild?.remove();
-            scoreContainer?.insertAdjacentHTML(
-              'afterbegin',
-              '<img class="star" src="./images/star.png" alt="success">',
+            localStorage.setItem(
+              LocalStorageKeys.Statistic,
+              JSON.stringify(dataStorage),
             );
 
-            playAudio('./audio/error.mp3');
+            if (starsCount.length > starsLimit)
+              scoreContainer?.lastChild?.remove();
+
+            scoreContainer?.insertAdjacentHTML(
+              'afterbegin',
+              `<img class="star" src=${ScoreImg.Mistake} alt="success">`,
+            );
+
+            playAudio(Audio.Mistake);
           }
         }
       });
@@ -164,4 +171,9 @@ const gameCardsRender = (data: Array<Set>): void => {
   );
 };
 
-export { gameCardsRender };
+export const gameCardsRender = (data: Array<Set>): void => {
+  const mainPage = document.getElementById('main') as HTMLElement;
+  mainPage.innerHTML = gameCardsMarkupTemplate(data);
+
+  startGame(data);
+};
