@@ -1,18 +1,14 @@
+import { categories } from '../../data/categories';
+import { Category } from '../../shared/types';
 import './sidebar.scss';
 
-const sidebarMarkupTemplate = (
-  data: Array<{
-    route: string;
-    category: string;
-    image: string;
-  }>,
-): string => `
+export const sidebarMarkup = `
     <aside class="sidebar">
       <h2><a href="#home" class="link sidebar-active-link">Main Page</a></h2>
       <ul class="sidebar-list">
-      ${data
+      ${categories
     .map(
-      el =>
+      (el: Category) =>
         `<li class="item">
           <a class="link" href="#${el.route}">${el.category}</a>
         </li>`,
@@ -24,5 +20,3 @@ const sidebarMarkupTemplate = (
       </ul>
     </aside>
 `;
-
-export { sidebarMarkupTemplate };

@@ -19,3 +19,11 @@ export type Sets = {
   clothes: Array<Set>;
   emotions: Array<Set>;
 };
+
+export type Category = {
+  route: string;
+  category: string;
+  image: string;
+};
+
+export type Categories = Array<Category>;

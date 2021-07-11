@@ -1,13 +1,8 @@
 import { categories } from '../../data/categories';
+import { Categories } from '../../shared/types';
 import './mainPage.scss';
 
-const mainPageMarkupTemplate = (
-  data: Array<{
-    route: string;
-    category: string;
-    image: string;
-  }>,
-) => `
+const mainPageMarkupTemplate = (data: Categories) => `
     <section class="category-section">
       <div class="container">
         <ul class="category-list">
@@ -24,9 +19,7 @@ const mainPageMarkupTemplate = (
     </section>
 `;
 
-const mainPageRender = (): void => {
+export const mainPageRender = (): void => {
   const mainPage = document.getElementById('main') as HTMLElement;
   mainPage.innerHTML = mainPageMarkupTemplate(categories);
 };
-
-export { mainPageRender };
