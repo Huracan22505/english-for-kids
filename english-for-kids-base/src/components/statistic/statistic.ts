@@ -44,6 +44,7 @@ const statisticMarkupTemplate = (words: Array<Array<Set>>) => `
       <button class="stats-btn sort-alphabet-btn" type="button">Sort by alphabet</button>
       <button class="stats-btn sort-guessing-btn" type="button">Sort by guessing</button>
       <button class="stats-btn sort-mistakes-btn" type="button">Sort by mistakes</button>
+      <button class="stats-btn difficult-btn" type="button">Difficult Words</button>
     </div>
       <h2 class="hidden">Statistic</h2>
       <div id="stats-table">
