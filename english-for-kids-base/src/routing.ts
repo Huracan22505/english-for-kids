@@ -4,37 +4,38 @@ import { gameCardsRender } from './components/cards/gameCards';
 import { statisticRender } from './components/statistic/statistic';
 
 import { sets } from './data/sets';
+import { LocalStorageKeys, Mods, Routes } from './shared/enums';
 
 const trainingRender = (hash: string) => {
   switch (hash) {
-    case 'home':
+    case Routes.Home:
       mainPageRender();
       break;
-    case 'actionSetA':
+    case Routes.ActionSetA:
       trainingCardsRender(sets.actionSetA);
       break;
-    case 'actionSetB':
+    case Routes.ActionSetB:
       trainingCardsRender(sets.actionSetB);
       break;
-    case 'actionSetC':
+    case Routes.ActionSetC:
       trainingCardsRender(sets.actionSetC);
       break;
-    case 'adjective':
+    case Routes.Adjective:
       trainingCardsRender(sets.adjective);
       break;
-    case 'animalSetA':
+    case Routes.AnimalSetA:
       trainingCardsRender(sets.animalSetA);
       break;
-    case 'animalSetB':
+    case Routes.AnimalSetB:
       trainingCardsRender(sets.animalSetB);
       break;
-    case 'clothes':
+    case Routes.Clothes:
       trainingCardsRender(sets.clothes);
       break;
-    case 'emotions':
+    case Routes.Emotions:
       trainingCardsRender(sets.emotions);
       break;
-    case 'statistic':
+    case Routes.Statistic:
       statisticRender();
       break;
     default:
@@ -45,34 +46,34 @@ const trainingRender = (hash: string) => {
 
 const gameRender = (hash: string) => {
   switch (hash) {
-    case 'home':
+    case Routes.Home:
       mainPageRender();
       break;
-    case 'actionSetA':
+    case Routes.ActionSetA:
       gameCardsRender(sets.actionSetA);
       break;
-    case 'actionSetB':
+    case Routes.ActionSetB:
       gameCardsRender(sets.actionSetB);
       break;
-    case 'actionSetC':
+    case Routes.ActionSetC:
       gameCardsRender(sets.actionSetC);
       break;
-    case 'adjective':
+    case Routes.Adjective:
       gameCardsRender(sets.adjective);
       break;
-    case 'animalSetA':
+    case Routes.AnimalSetA:
       gameCardsRender(sets.animalSetA);
       break;
-    case 'animalSetB':
+    case Routes.AnimalSetB:
       gameCardsRender(sets.animalSetB);
       break;
-    case 'clothes':
+    case Routes.Clothes:
       gameCardsRender(sets.clothes);
       break;
-    case 'emotions':
+    case Routes.Emotions:
       gameCardsRender(sets.emotions);
       break;
-    case 'statistic':
+    case Routes.Statistic:
       statisticRender();
       break;
     default:
@@ -83,7 +84,7 @@ const gameRender = (hash: string) => {
 
 const routing = (): void => {
   const controller = (hash: string) => {
-    if (localStorage.getItem('mode') === 'training') {
+    if (localStorage.getItem(LocalStorageKeys.Mode) === Mods.Training) {
       trainingRender(hash);
     } else {
       gameRender(hash);

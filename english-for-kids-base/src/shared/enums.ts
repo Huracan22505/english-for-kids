@@ -41,3 +41,16 @@ export enum MenuIcons {
   Open = './burger-icon.png',
   Close = './close-burger.png',
 }
+
+export enum Routes {
+  Home = 'home',
+  ActionSetA = 'actionSetA',
+  ActionSetB = 'actionSetB',
+  ActionSetC = 'actionSetC',
+  Adjective = 'adjective',
+  AnimalSetA = 'animalSetA',
+  AnimalSetB = 'animalSetB',
+  Clothes = 'clothes',
+  Emotions = 'emotions',
+  Statistic = 'statistic',
+}
