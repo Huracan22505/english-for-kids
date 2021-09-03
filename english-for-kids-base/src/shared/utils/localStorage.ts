@@ -7,11 +7,11 @@ export const setupLocalStorage = (): void => {
   const modeSwitcherToggle = document.querySelector(
     '.mode-switch__toggle',
   ) as HTMLInputElement;
+  const getMode = localStorage.getItem(LocalStorageKeys.Mode);
 
-  if (!localStorage.getItem(LocalStorageKeys.Mode))
-    localStorage.setItem(LocalStorageKeys.Mode, Mods.Training);
+  if (!getMode) localStorage.setItem(LocalStorageKeys.Mode, Mods.Training);
 
-  if (localStorage.getItem(LocalStorageKeys.Mode) === Mods.Game) {
+  if (getMode === Mods.Game) {
     modeSwitcherToggle.checked = true;
   }
 
@@ -27,6 +27,5 @@ export const getDataFromLocalStorage = (
   if (typeof localStore !== 'string')
     throw new Error('Local Storage not found');
 
-  const data = JSON.parse(localStore);
-  return data;
+  return JSON.parse(localStore);
 };

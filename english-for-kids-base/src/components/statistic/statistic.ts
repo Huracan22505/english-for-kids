@@ -2,6 +2,8 @@ import { categories } from '../../data/categories';
 import { Set } from '../../shared/types';
 import { getSuccessPercents } from '../../shared/utils/getPercents';
 import { sets } from '../../data/sets';
+import { getDataFromLocalStorage } from '../../shared/utils/localStorage';
+import { LocalStorageKeys } from '../../shared/enums';
 import './statistic.scss';
 
 const categoriesMarkupTemplate = (words: Array<Array<Set>>) => `
@@ -17,14 +19,17 @@ const categoriesMarkupTemplate = (words: Array<Array<Set>>) => `
           <ul class="words-list">
             ${words[i]
     .map(
-      (ele: Set) => `
+      (elem: Set) => `
             <li class="word-list-item">
-              <p>${ele.text}</p>
-              <p>${ele.translate}</p>
-              <p>Training clicks: ${ele.clicks}</p>
-              <p>Guessing: ${ele.success}</p>
-              <p>Mistakes: ${ele.mistakes}</p>
-              <p>Guessing ${getSuccessPercents(ele.success, ele.mistakes)}%</p>
+              <p>${elem.text}</p>
+              <p>${elem.translate}</p>
+              <p>Training clicks: ${elem.clicks}</p>
+              <p>Guessing: ${elem.success}</p>
+              <p>Mistakes: ${elem.mistakes}</p>
+              <p>Guessing ${getSuccessPercents(
+    elem.success,
+    elem.mistakes,
+  )}%</p>
             </li>
             `,
     )
@@ -54,11 +59,10 @@ const statisticMarkupTemplate = (words: Array<Array<Set>>) => `
 `;
 
 const statisticRender = (): void => {
-  const localStoreData = localStorage.getItem('statistic');
+  const localStoreData = getDataFromLocalStorage(LocalStorageKeys.Statistic);
   if (!localStoreData) return;
-  const data = JSON.parse(localStoreData);
 
-  const words: Array<Array<Set>> = Object.values(data);
+  const words: Array<Array<Set>> = Object.values(localStoreData);
 
   const mainPage = document.getElementById('main') as HTMLElement;
   mainPage.innerHTML = statisticMarkupTemplate(words);
